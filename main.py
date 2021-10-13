@@ -28,7 +28,7 @@ torch.set_printoptions(profile='full')
 
 
 def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, valloader, best_pred=0.0):
-    writer_name = '{}_{}'.format('Joint', str(time.strftime("%m-%d %H:%M:%S", time.localtime())))
+    writer_name = '{}_{}'.format('LISU', str(time.strftime("%m-%d %H:%M:%S", time.localtime())))
     writer = SummaryWriter(os.path.join('runs', writer_name))
     step = 0
 
@@ -36,7 +36,6 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
     opt_Decomp.zero_grad()
 
     loss_decomp = LossRetinex()
-    train_loss = 0.0
 
     for epoch in range(args.start_epoch, args.num_epochs):
         lr = utils.poly_lr_scheduler(opt_Decomp, 0.001, epoch, max_iter=args.num_epochs)
@@ -56,6 +55,7 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
         tbar = tqdm(trainloader)
 
         for i, (image, image2, label, name) in enumerate(tbar):
+            train_loss = 0.0
             image = image.cuda()
             label = label.cuda()
             image2 = image2.cuda()
@@ -110,7 +110,7 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
             train_loss += loss1.item() + loss.item()
 
             writer.add_scalar('loss_step', train_loss, step)
-            loss_record.append(loss.item())
+            loss_record.append(train_loss)
 
             tbar.set_description('TrainLoss: {0:.3} mIoU: {1:.3} S: {2:.3}'.format(
                 np.mean(loss_record), np.nanmean(iou_record), loss_r))
@@ -151,7 +151,7 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
             iou, loss_val, acc, pre_val, lbl_val, avgacc = val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, valloader)
             writer.add_scalar('iou_val', iou, epoch)
             writer.add_scalar('acc_val', acc, epoch)
-            writer.add_scalar('loss_val', loss_val, epoch)
+            writer.add_scalar('loss_epoch_val', loss_val, epoch)
 
             if not os.path.isdir(args.save_model_path):
                 os.makedirs(args.save_model_path)
