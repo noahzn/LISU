@@ -134,7 +134,7 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
                 cat_image = np.clip(cat_image * 255.0, 0, 255.0).astype('uint8')
 
                 im = Image.fromarray(cat_image)
-                filepath = os.path.join('/data2/zhangn/project/img20', 'train_%d_%d.png' %
+                filepath = os.path.join('/path/to/folder', 'train_%d_%d.png' %
                                         (epoch, i))
 
                 im.save(filepath[:-4] + '.jpg')
@@ -179,7 +179,7 @@ def train_and_val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, v
                     'best_pred': best_pred,
                 }, is_best=False, filename='{0}.pth.tar'.format(epoch))
 
-            with open('/data2/zhangn/project/img20/log.csv', 'a') as csvfile:
+            with open('/path/to/log.csv', 'a') as csvfile:
                 wt = csv.DictWriter(csvfile, fieldnames=['iou', 'acc', 'avgacc', 'average'])
 
                 wt.writeheader()
@@ -254,7 +254,7 @@ def val(args, Decomp, opt_Decomp, Enhance, opt_Enhance, trainloader, valloader, 
                     cat_image = np.clip(cat_image * 255.0, 0, 255.0).astype('uint8')
 
                     im = Image.fromarray(cat_image)
-                    filepath = os.path.join('/data2/zhangn/project/img20', 'val_%d.png' % i)
+                    filepath = os.path.join('/path/to/save/folder', 'val_%d.png' % i)
                     im.save(filepath[:-4] + '.jpg')
 
         acc, acc_cls, iou, _, iu = utils.label_accuracy_score(lbls, preds, args.num_classes)
@@ -307,7 +307,7 @@ def output(args, Net, Net2, valloader):
                         cat_image = np.concatenate([lbl], axis=2)
                     else:
                         cat_image = np.concatenate([output_list[x][0, :, :, :].detach().cpu()], axis=2)
-                    filepath = os.path.join('/data2/zhangn/project/output_lisujoint_t', '%s_%s.png' % (name[0], output_list_name[x]))
+                    filepath = os.path.join('/path/to/output_lisujoint_t', '%s_%s.png' % (name[0], output_list_name[x]))
 
                     cat_image = np.transpose(cat_image, (1, 2, 0))
                     cat_image = np.clip(cat_image * 255.0, 0, 255.0).astype('uint8')
@@ -370,7 +370,7 @@ def main(argv):
     parser.add_argument('--cuda', type=str, default='0', help='GPU id used for training')
     parser.add_argument('--seed', type=int, default=1, help='random seed')
     parser.add_argument('--use_gpu', type=bool, default=True, help='whether to user gpu for training')
-    parser.add_argument('--pretrained_model_path', type=str, default='/data2/zhangn/project/experiments/LISU-joint_real/3.pth.tar', help='saved model')
+    parser.add_argument('--pretrained_model_path', type=str, default='/path/to/LISU_LLRGBD_real_best.pth.tar', help='saved model')
     parser.add_argument('--save_model_path', type=str, default='./checkpoints', help='path to save trained model')
     parser.add_argument('--multiple-GPUs', default=False, help='train with multiple GPUs')
     args = parser.parse_args(argv)
