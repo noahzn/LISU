@@ -1,6 +1,6 @@
 # LISU: Low-light Indoor Scene Understanding
 
-##Authors
+## Authors
 Ning Zhang, Francesco Nex, Norman Kerle, George Vosselman
 
 # Introduction
