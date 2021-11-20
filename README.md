@@ -17,25 +17,25 @@ real data set called **LLRGBD-real**. We provide pairs of low-light/normal-light
 
 
 # Usage:
-##1. Download Datasets:
+## Download Datasets:
 LLRGBD-Real: https://surfdrive.surf.nl/files/index.php/s/EM9sa5DgofvTHdi
 LLRGBD-synthetic: https://surfdrive.surf.nl/files/index.php/s/2GvpEMqQ2FVtGpV
 
 
-##Download checkpoint tarined on LLRGBD-real
+## Download checkpoint tarined on LLRGBD-real
 https://surfdrive.surf.nl/files/index.php/s/vaWpfQ49nBkauWv
 
-##Evaluation on LLRGBD-real
+## Evaluation on LLRGBD-real
 `python main.py --mode evaluation --data_path /path/to/your/dataset/ --pretrained-model-path /path/to/LISU_LLRGBD_real_best.pth.tar`
 
-##Train on LLRGBD-real
+## Train on LLRGBD-real
 `python main.py --mode evaluation --data_path /path/to/your/dataset/ --pretrained_model_path None`
 
-##Other usages
+## Other usages
 Please check the code for other usages.
 
 
-#Citation
+# Citation
 If you use our code or datasets please cite:
 
     @article{zhang2021towards,
