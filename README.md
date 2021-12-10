@@ -19,6 +19,7 @@ real data set called **LLRGBD-real**. We provide pairs of low-light/normal-light
 # Usage:
 ## Download Datasets:
 LLRGBD-Real: https://surfdrive.surf.nl/files/index.php/s/EM9sa5DgofvTHdi
+
 LLRGBD-synthetic: https://surfdrive.surf.nl/files/index.php/s/2GvpEMqQ2FVtGpV
 
 
@@ -37,8 +38,21 @@ Please check the code for other usages.
 
 # Citation
 If you use our code or datasets please cite:
-
-    @article{zhang2021towards,
+	
+	@article{ZHANG2022470,
+	title = {LISU: Low-light indoor scene understanding with joint learning of reflectance restoration},
+	journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+	volume = {183},
+	pages = {470-481},
+	year = {2022},
+	issn = {0924-2716},
+	doi = {https://doi.org/10.1016/j.isprsjprs.2021.11.010},
+	url = {https://www.sciencedirect.com/science/article/pii/S0924271621003087},
+	author = {Ning Zhang and Francesco Nex and Norman Kerle and George Vosselman},
+	}
+    
+	
+	@article{zhang2021towards,
     title={Towards Learning Low-Light Indoor Semantic Segmentation with Illumination-Invariant Features},
     author={Zhang, N and Nex, F and Kerle, N and Vosselman, G},
     journal={The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences},
@@ -47,4 +61,3 @@ If you use our code or datasets please cite:
     year={2021},
     publisher={Copernicus GmbH}
     }
-    
