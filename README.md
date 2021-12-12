@@ -39,16 +39,14 @@ Please check the code for other usages.
 # Citation
 If you use our code or datasets please cite:
 	
-	@article{ZHANG2022470,
-	title = {LISU: Low-light indoor scene understanding with joint learning of reflectance restoration},
-	journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
-	volume = {183},
-	pages = {470-481},
-	year = {2022},
-	issn = {0924-2716},
-	doi = {https://doi.org/10.1016/j.isprsjprs.2021.11.010},
-	url = {https://www.sciencedirect.com/science/article/pii/S0924271621003087},
-	author = {Ning Zhang and Francesco Nex and Norman Kerle and George Vosselman},
+	@article{zhang2022lisu,
+    title={LISU: Low-light indoor scene understanding with joint learning of reflectance restoration},
+    author={Zhang, Ning and Nex, FC and Kerle, N and Vosselman, G},
+    journal={ISPRS journal of photogrammetry and remote sensing},
+    volume={183},
+    pages={470--481},
+    year={2022},
+    publisher={Elsevier}
 	}
     
 	
